@@ -1,24 +1,32 @@
 # Guard::Zeitwerk
 
-TODO: Delete this and the text below, and describe your gem
+Automatically adds the module definitions to blank files, inflected from Zeitwerk. This means if you run `touch ./lib/my-gem/fizz/buzz.rb` and open the file, you'll see:
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/guard/zeitwerk`. To experiment with that code, run `bin/console` for an interactive prompt.
+```ruby
+module MyGem::Fizz
+  class Buzz
+  end
+end
+```
+
+Or from your favorite code editor, create a file, save it, reload the file, and your module will be ready for coding. No more boilerplate!
+
+> *** Note
+> Future versions of Guard Zeitwerk will allow greater customization for generated files. This initial release focuses on getting the basics out into the world.
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
-
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+    $ bundle add guard-zeitwerk
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+Then add to your project's `Guardfile` by running:
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+    $ bundle exec guard init rspec
 
-## Usage
+## Limitations
 
-TODO: Write usage instructions here
+Guard Zeitwerk currently does not inflect on whether or not the namespace that's being generated is a class or module. Future releases will likely include the behavior.
 
 ## Development
 
@@ -28,7 +36,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/guard-zeitwerk. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/guard-zeitwerk/blob/main/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/rubymonolith/guard-zeitwerk. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/rubymonolith/guard-zeitwerk/blob/main/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -36,4 +44,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Guard::Zeitwerk project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/guard-zeitwerk/blob/main/CODE_OF_CONDUCT.md).
+Everyone interacting in the Guard::Zeitwerk project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/rubymonolith/guard-zeitwerk/blob/main/CODE_OF_CONDUCT.md).

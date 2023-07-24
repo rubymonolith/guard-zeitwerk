@@ -2,8 +2,9 @@
 
 require_relative "zeitwerk/version"
 
-require 'guard'
-require 'guard/plugin'
+require "guard"
+require "guard/plugin"
+require "zeitwerk"
 
 module Guard
   class Zeitwerk < Plugin
@@ -38,12 +39,19 @@ module Guard
       paths.each do |path|
         next unless File.zero?(path)
 
-        ::Zeitwerk::Registry.each do |loader|
+        ::Zeitwerk::Registry.loaders.each do |loader|
           namespace = loader.cpath_at(path)
           next if namespace.nil?
 
-          content = "module #{namespace}\n\nend"
-          File.write(path, content)
+          *constant_names, object_name = namespace.split("::")
+          module_name = constant_names.join("::")
+
+          File.write path, <<~RUBY
+            module #{module_name}
+              class #{object_name}
+              end
+            end
+          RUBY
 
           UI.info "Generated module namespace #{namespace} in #{path}"
         end
