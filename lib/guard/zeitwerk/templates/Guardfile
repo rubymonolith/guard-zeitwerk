@@ -2,6 +2,6 @@
 #
 # The `require:` parameter is configured for a Rails project. If using it for
 # a gem, change the require path to whatever loads a Zeitwerk::Autoloader.
-guard :zeitwerk, require: "config/application.rb" do
+guard :zeitwerk, require: "./config/application.rb" do
   watch(/.*\.rb$/)
 end
