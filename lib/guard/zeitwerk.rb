@@ -10,7 +10,7 @@ module Guard
   class Zeitwerk < Plugin
     def initialize(options = {})
       super
-      # Additional initialization options, if needed
+      require options[:require] if options.key? :require
     end
 
     def start
