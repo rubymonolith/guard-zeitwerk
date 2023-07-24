@@ -14,7 +14,8 @@ module Guard
     end
 
     def start
-      # Called when Guard starts
+      warn_zero_loaders
+      detect_and_initialize_rails
     end
 
     def run_all
@@ -35,6 +36,16 @@ module Guard
 
     protected
 
+    def detect_and_initialize_rails
+      Rails.initialize! if defined? Rails and not Rails.initialized?
+    end
+
+    def warn_zero_loaders
+      if ::Zeitwerk::Registry.loaders.count.zero?
+        UI.info "No Zeitwerk::Loader instances running. Make sure the file specified in the `require:` argument creates Zeitwerk::Loader instances."
+      end
+    end
+
     def process(paths)
       paths.each do |path|
         next unless File.zero?(path)
@@ -47,9 +58,7 @@ module Guard
           module_name = constant_names.join("::")
 
           File.write path, <<~RUBY
-            module #{module_name}
-              class #{object_name}
-              end
+            class #{namespace}
             end
           RUBY
 

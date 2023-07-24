@@ -3,9 +3,7 @@
 Automatically adds the module definitions to blank files, inflected from Zeitwerk. This means if you run `touch ./lib/my-gem/fizz/buzz.rb` and open the file, you'll see:
 
 ```ruby
-module MyGem::Fizz
-  class Buzz
-  end
+class MyGem::Fizz::Buzz
 end
 ```
 

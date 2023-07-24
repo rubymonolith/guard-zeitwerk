@@ -1,4 +1,4 @@
 # Watches all Ruby files in a project.
-guard :zeitwerk do
+guard :zeitwerk, require: "config/application.rb" do
   watch(/.*\.rb$/)
 end
