@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/fxn/zeitwerk.git
-  revision: 607e162a6086901240e334480ff495cf25acfcd7
+  revision: 278ea85cd8169a32bc7a14d88f0e7b76d4ebe056
   specs:
     zeitwerk (2.6.8)
 

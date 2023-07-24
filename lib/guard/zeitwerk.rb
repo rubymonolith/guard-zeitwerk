@@ -51,7 +51,7 @@ module Guard
         next unless File.zero?(path)
 
         ::Zeitwerk::Registry.loaders.each do |loader|
-          namespace = loader.cpath_at(path)
+          namespace = loader.expected_cpath_at(path)
           next if namespace.nil?
 
           *constant_names, object_name = namespace.split("::")
