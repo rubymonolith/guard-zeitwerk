@@ -11,6 +11,4 @@ gem "rspec", "~> 3.0"
 
 gem "standard", "~> 1.3"
 
-gem "zeitwerk", "~> 2.6", github: "fxn/zeitwerk"
-
 gem "guard", "~> 2.18"
